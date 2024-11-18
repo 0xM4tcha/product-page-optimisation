@@ -1,8 +1,7 @@
-// /app/products/[id]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
 
 interface Product {
@@ -14,19 +13,16 @@ interface Product {
 }
 
 const ProductDetailPage = () => {
-  const router = useRouter();
-  console.log('router.query', router.query);
-  const id = 1;
-  // const { id } = router.query;
+  const { id } = useParams()
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     if (id) {
-      fetchProductDetail(id as number);
+      fetchProductDetail(id as string);
     }
   }, [id]);
 
-  const fetchProductDetail = async (id: number) => {
+  const fetchProductDetail = async (id: string) => {
     const res = await fetch(`https://dummyjson.com/products/${id}`);
     const data = await res.json();
     setProduct(data);
