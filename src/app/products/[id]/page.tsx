@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 interface Product {
   title: string;
@@ -36,7 +37,18 @@ const ProductDetailPage = () => {
   return (
     <div>
       <h1>{product.title}</h1>
-      <img src={product.thumbnail} alt={product.title} width={300} height={300} />
+      <Image 
+        src={product.thumbnail}
+        alt={product.title}
+        width={200}
+        height={200}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        loading="lazy"
+      />
+      {/* <img src={product.thumbnail} alt={product.title} width={300} height={300} /> */}
       <p>{product.description}</p>
       <p><strong>Price: ${product.price}</strong></p>
       <p>Category: {product.category}</p>
