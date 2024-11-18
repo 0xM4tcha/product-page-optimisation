@@ -41,6 +41,7 @@ const ProductDetailPage = () => {
       <p>{product.description}</p>
       <p><strong>Price: ${product.price}</strong></p>
       <p>Category: {product.category}</p>
+      <p>Availbility Status: {product.availabilityStatus}</p>
     </div>
   );
 };

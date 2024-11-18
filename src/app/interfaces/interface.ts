@@ -5,6 +5,7 @@ export interface IProduct {
   price: number;
   thumbnail: string;
   category: string;
+  availabilityStatus: string;
 }
 
 export interface ICategory {
