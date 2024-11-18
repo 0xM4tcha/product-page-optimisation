@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { IProduct, ICategory } from '../interfaces/interface';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 const ProductCard = dynamic(() => import('./components/ProductCard'), {
   loading: () => <p>Loading...</p>,
@@ -75,7 +77,9 @@ const ProductsPage = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
         {filteredProducts.map((product) => (
           <Link key={product.id} href={`/products/${product.id}`}>
-            <ProductCard product={product} />
+            <Suspense fallback={<Loading />}>
+              <ProductCard product={product} />
+            </Suspense>
           </Link>
         ))}
       </div>

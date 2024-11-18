@@ -13,10 +13,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Image 
         src={thumbnail}
         alt={title}
-        width={100}
+        width={200}
         height={200}
-        layout="responsive"
-        loading="lazy"
+        style={{ objectFit: 'cover' }}
       />
       <h2 style={{ fontSize: '18px', margin: '8px 0' }}>{title}</h2>
       <p style={{ fontSize: '14px', color: '#666' }}>{description}</p>
