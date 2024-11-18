@@ -49,7 +49,7 @@ const ProductsPage = () => {
   };
 
   const filteredByCategory = async () => {
-    const res = await fetch(`https://dummyjson.com/products/category/${selectedCategory}`)
+    const res = await fetch(`https://dummyjson.com/products/category/${selectedCategory}`);
     const { products } = await res.json();
     setFilteredProducts(products);
   }

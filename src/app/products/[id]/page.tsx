@@ -1,27 +1,8 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { IProduct } from '@/app/interfaces/interface';
 
-const ProductDetailPage = () => {
-  const { id } = useParams()
-  const [product, setProduct] = useState<IProduct | null>(null);
-
-  useEffect(() => {
-    if (id) {
-      fetchProductDetail(id as string);
-    }
-  }, [id]);
-
-  const fetchProductDetail = async (id: string) => {
-    const res = await fetch(`https://dummyjson.com/products/${id}`);
-    const data = await res.json();
-    setProduct(data);
-  };
-
-  if (!product) return <p>Loading...</p>;
+export default async function ProductDetailPage ({ params }: { params: { id: string } }) {
+  const { id } = await params;
+  const product = await fetch(`https://dummyjson.com/products/${id}`).then(res => res.json());
 
   return (
     <div>
@@ -45,5 +26,3 @@ const ProductDetailPage = () => {
     </div>
   );
 };
-
-export default ProductDetailPage;
