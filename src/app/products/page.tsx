@@ -1,10 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import ProductCard from './components/ProductCard';
-import Filters from './components/Filters';
 import { IProduct, ICategory } from '../interfaces/interface';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const ProductCard = dynamic(() => import('./components/ProductCard'), {
+  loading: () => <p>Loading...</p>,
+});
+
+const Filters = dynamic(() => import('./components/Filters'), {
+  loading: () => <p>Loading filters...</p>,
+});
 
 const ProductsPage = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
