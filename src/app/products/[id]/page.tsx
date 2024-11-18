@@ -3,18 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-
-interface Product {
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  thumbnail: string;
-}
+import { IProduct } from '@/app/interfaces/interface';
 
 const ProductDetailPage = () => {
   const { id } = useParams()
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<IProduct | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -44,7 +37,7 @@ const ProductDetailPage = () => {
         }}
         loading="lazy"
       />
-      {/* <img src={product.thumbnail} alt={product.title} width={300} height={300} /> */}
+
       <p>{product.description}</p>
       <p><strong>Price: ${product.price}</strong></p>
       <p>Category: {product.category}</p>
@@ -53,9 +46,3 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
-
-// const ProductDetailPage = () => {
-//   return (<></>)
-// }
-
-// export default ProductDetailPage;
