@@ -15,11 +15,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
         alt={title}
         width={200}
         height={200}
-        // style={{ objectFit: 'cover' }}
         style={{
           width: '100%',
           height: 'auto',
         }}
+        loading="lazy"
       />
       <h2 style={{ fontSize: '18px', margin: '8px 0' }}>{title}</h2>
       <p style={{ fontSize: '14px', color: '#666' }}>{description}</p>
